@@ -3,12 +3,11 @@ package praktikum;
 class Mahasiswa {
     private long nim;
     private String nama;
-    private String asal;
+    
 
-    public Mahasiswa(long nim, String nama, String asal) {
+    public Mahasiswa(long nim, String nama) {
         this.nim = nim;
         this.nama = nama;
-        this.asal = asal;
     }
 
     public long getNim() {
@@ -19,14 +18,9 @@ class Mahasiswa {
         return nama;
     }
 
-    public String getAsal() {
-        return asal;
-    }
-
     public void displayMhs() {
         System.out.print("\tNIM: " + nim);
-        System.out.print(", Nama: " + nama);
-        System.out.println(", Asal: " + asal);
+        System.out.println(" Nama: " + nama);
     }
 }
 
@@ -39,8 +33,8 @@ public class DataMahasiswa {
         nElemen = 0;
     }
 
-    public void insert(long nim, String nama, String asal) {
-        arr[nElemen] = new Mahasiswa(nim, nama, asal);
+    public void insert(long nim, String nama) {
+        arr[nElemen] = new Mahasiswa(nim, nama);
         nElemen++;
     }
 
@@ -117,20 +111,20 @@ public class DataMahasiswa {
         recQuickSort(0, nElemen - 1);
     }
 
-    private void recQuickSort(int left, int right) {
-        if (right - left <= 0)
+    private void recQuickSort(int kiri, int kanan) {
+        if (kanan - kiri <= 0)
             return;
         else {
-            String pivot = arr[right].getNama();
-            int partition = partitionIt(left, right, pivot);
-            recQuickSort(left, partition - 1);
-            recQuickSort(partition + 1, right);
+            String pivot = arr[kanan].getNama();
+            int partition = partitionIt(kiri, kanan, pivot);
+            recQuickSort(kiri, partition - 1);
+            recQuickSort(partition + 1, kanan);
         }
     }
 
-    private int partitionIt(int left, int right, String pivot) {
-        int leftPtr = left - 1;
-        int rightPtr = right;
+    private int partitionIt(int kiri, int kanan, String pivot) {
+        int leftPtr = kiri - 1;
+        int rightPtr = kanan;
         while (true) {
             while (arr[++leftPtr].getNama().compareToIgnoreCase(pivot) < 0) ;
             while (rightPtr > 0 && arr[--rightPtr].getNama().compareToIgnoreCase(pivot) > 0) ;
@@ -139,7 +133,7 @@ public class DataMahasiswa {
             else
                 swap(leftPtr, rightPtr);
         }
-        swap(leftPtr, right);
+        swap(leftPtr, kanan);
         return leftPtr;
     }
 
@@ -154,27 +148,27 @@ public class DataMahasiswa {
     public static void main(String[] args) {
         DataMahasiswa arr = new DataMahasiswa(10);
 
-        arr.insert(16650200, "Jundi", "Malang");
-        arr.insert(16650210, "Ahmad", "Sidoarjo");
-        arr.insert(16650220, "Ismail", "Banyuwangi");
-        arr.insert(16650230, "Sofi", "Semarang");
-        arr.insert(16650240, "Dinda", "Bandung");
-        arr.insert(16650250, "Rais", "Ambon");
-        arr.insert(16650260, "Helmi", "Madura");
-        arr.insert(16650270, "Agung", "Madiun");
-        arr.insert(16650280, "Arina", "Malang");
+        arr.insert(16650200, "Jundi");
+        arr.insert(16650210, "Ahmad");
+        arr.insert(16650220, "Ismail");
+        arr.insert(16650230, "Sofi");
+        arr.insert(16650240, "Dinda");
+        arr.insert(16650250, "Rais");
+        arr.insert(16650260, "Helmi");
+        arr.insert(16650270, "Agung");
+        arr.insert(16650280, "Arina");
 
         System.out.println("=== DATA MAHASISWA SEBELUM SORTING ===");
-        arr.displayArray();
-
-        // SHELL SORT BY NIM
-        System.out.println("=== SHELL SORT (Berdasarkan NIM) ===");
-        arr.ShellSortByNim();
         arr.displayArray();
 
         // MERGE SORT BY NAMA
         System.out.println("=== MERGE SORT (Berdasarkan Nama) ===");
         arr.MergeSortByNama();
+        arr.displayArray();
+        
+        // SHELL SORT BY NIM
+        System.out.println("=== SHELL SORT (Berdasarkan NIM) ===");
+        arr.ShellSortByNim();
         arr.displayArray();
 
         // QUICK SORT BY NAMA
