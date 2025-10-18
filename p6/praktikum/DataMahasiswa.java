@@ -176,4 +176,3 @@ public class DataMahasiswa {
         arr.QuickSortByNama();
         arr.displayArray();
     }
-}
