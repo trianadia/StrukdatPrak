@@ -1,4 +1,3 @@
-
 import java.util.Stack;
 
 public class Tree {
@@ -41,12 +40,16 @@ public class Tree {
                         parent.leftChild = newNode;
                         return;
                     }
-                } else {
+                } else if (id > current.id) {
                     current = current.rightChild;
                     if (current == null) {
                         parent.rightChild = newNode;
                         return;
                     }
+                } else {
+                    // id == current.id -> update data, do not insert duplicate
+                    current.data = data;
+                    return;
                 }
             }
         }
@@ -171,8 +174,7 @@ public class Tree {
         globalStack.push(root);
         int nBlanks = 32;
         boolean isRowEmpty = false;
-        System.out.println(
-                "............................................");
+        System.out.println("............................................");
         while (isRowEmpty == false) {
             Stack localStack = new Stack();
             isRowEmpty = true;
@@ -204,7 +206,31 @@ public class Tree {
                 globalStack.push(localStack.pop());
             }
         }
-        System.out.println(
-                "............................................");
+        System.out.println("............................................");
+    }
+
+    // ===============================
+    // FIND MIN AND MAX
+    // ===============================
+    public int findMin() {
+        if (root == null) {
+            throw new RuntimeException("Tree is empty");
+        }
+        Node current = root;
+        while (current.leftChild != null) {
+            current = current.leftChild;
+        }
+        return current.id;
+    }
+
+    public int findMax() {
+        if (root == null) {
+            throw new RuntimeException("Tree is empty");
+        }
+        Node current = root;
+        while (current.rightChild != null) {
+            current = current.rightChild;
+        }
+        return current.id;
     }
 }
