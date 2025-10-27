@@ -2,14 +2,25 @@ package p8;
 
 public class HashTableApp {
     public static void main(String[] args) {
-        // ukuran tabel 15
         HashTable table = new HashTable(15);
 
-        // tambahkan 10 item
-        int[] items = {10, 25, 30, 45, 50, 65, 80, 95, 100, 115};
-        for (int v : items) table.insert(v);
+        // Data awal (10 item)
+        int[] dataAwal = {10, 22, 31, 4, 15, 28, 17, 88, 59, 40};
+        for (int data : dataAwal) {
+            table.insert(data);
+        }
 
-        // tampilkan isi tabel
+        System.out.println("=== Isi Tabel Sebelum Penambahan (10 item) ===");
+        table.displayTable();
+
+        // Tambahkan 5 item baru
+        int[] dataTambahan = {33, 19, 44, 56, 25};
+        for (int data : dataTambahan) {
+            table.insert(data);
+        }
+
+        System.out.println("=== Isi Tabel Setelah Penambahan (15 item) ===");
         table.displayTable();
     }
 }
+
