@@ -209,9 +209,6 @@ public class Tree {
         System.out.println("............................................");
     }
 
-    // ===============================
-    // FIND MIN AND MAX
-    // ===============================
     public int findMin() {
         if (root == null) {
             throw new RuntimeException("Tree is empty");
