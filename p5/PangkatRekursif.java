@@ -1,3 +1,5 @@
+package p5;
+
 public class PangkatRekursif {
     // Method rekursif untuk menghitung pangkat
     public static long pangkat(int base, int exp) {

@@ -47,7 +47,6 @@ public class Tree {
                         return;
                     }
                 } else {
-                    // id == current.id -> update data, do not insert duplicate
                     current.data = data;
                     return;
                 }

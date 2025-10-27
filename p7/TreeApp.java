@@ -19,8 +19,7 @@ public class TreeApp {
         theTree.insert(97, "Sasa");
 
         while (true) {
-            System.out.print("Enter first letter of show, m (min/max), "
-                    + "insert, find, delete, or traverse: ");
+            System.out.print("Enter first letter of show (s),  min/max (m), " + "insert (i), find (f), delete (d), or traverse (t): ");
             int choice = getChar();
             switch (choice) {
                 case 's':
@@ -28,18 +27,17 @@ public class TreeApp {
                     break;
                 case 'm':
                     try {
-                        System.out.println("Min: " + theTree.findMin());
-                        System.out.println("Max: " + theTree.findMax());
+                        System.out.println("Minimal: " + theTree.findMin());
+                        System.out.println("Maksimal: " + theTree.findMax());
                     } catch (RuntimeException e) {
                         System.out.println("Tree kosong: tidak ada min/max");
                     }
                     break;
                 case 'i':
-                    System.out.print("Enter value and data to"
-                            + " insert: ");
+                    System.out.print("Enter value and data to" + " insert: ");
                     value = getInt();
                     data = getString();
-                    // cek apakah key sudah ada
+                    
                     Node exists = theTree.find(value);
                     if (exists != null) {
                         System.out.println("Data dengan key " + value + " sudah ada, data akan diperbarui.");
@@ -71,7 +69,7 @@ public class TreeApp {
                     }
                     break;
                 case 't':
-                    System.out.print("Enter type 1, 2 or 3: ");
+                    System.out.print("Enter type 1 (PreOrder), 2 (InOrder) or 3 (PostOrder): ");
                     value = getInt();
                     theTree.traverse(value);
                     break;
