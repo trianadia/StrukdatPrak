@@ -32,5 +32,18 @@ public class HashTableApp {
                 System.out.println("Data dengan key " + key + " tidak ditemukan di tabel.");
             }
         }
+
+        // Proses penghapusan data
+        System.out.println("\n=== Proses penghapusan data ===");
+        int keyHapus = 23;
+        Data hasilHapus = table.delete(keyHapus);
+        if (hasilHapus != null) {
+            System.out.println("Data dengan key " + keyHapus + " berhasil dihapus dari tabel.");
+        } else {
+            System.out.println("Data dengan key " + keyHapus + " tidak ditemukan, tidak dapat dihapus.");
+        }
+
+        System.out.println("\n=== Isi tabel setelah penghapusan ===");
+        table.displayTable();
     }
 }

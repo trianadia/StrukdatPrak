@@ -55,4 +55,21 @@ class HashTable {
         }
         return null; // jika tidak ditemukan
     }
+
+    // Method delete
+    public Data delete(int key) {
+        int hashVal = hashFunc(key);
+        int count = 0;
+        while (hashArray[hashVal] != null && count < size) {
+            if (hashArray[hashVal].getKey() == key) {
+                Data temp = hashArray[hashVal];
+                hashArray[hashVal] = null; // hapus data
+                return temp; // kembalikan data yang dihapus
+            }
+            ++hashVal;
+            hashVal %= size;
+            count++;
+        }
+        return null; // jika tidak ditemukan
+    }
 }
