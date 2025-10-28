@@ -68,7 +68,16 @@ public class HashTableQuadraticApp {
             table.insert(d);
         }
 
-        System.out.println("=== Isi tabel setelah penambahan data (Quadratic Probing) ===");
-        table.displayTable();
+        System.out.println("=== Isi tabel SEBELUM penambahan data ===");
+        table.displayTable(); 
+
+        table.insert(55);
+        table.insert(101);
+        table.insert(7);
+        table.insert(15);
+        table.insert(567);
+
+        System.out.println("=== Isi tabel SESUDAH penambahan data (Quadratic Probing) ===");
+        table.displayTable(); 
     }
 }
