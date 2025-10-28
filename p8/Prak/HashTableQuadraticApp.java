@@ -38,18 +38,18 @@ class HashTable {
         return key % size;
     }
 
-    // Implementasi Quadratic Probing
+    
     public void insert(int data) {
         Data item = new Data(data);
         int key = item.getKey();
         int hashVal = hashFunc(key);
-        int i = 1; // increment quadratic (i²)
+        int i = 1; 
 
-        // selama posisi tidak kosong, lakukan quadratic probing
+      
         while (hashArray[hashVal] != null) {
             hashVal = (hashFunc(key) + i * i) % size;
             i++;
-            if (i > size) { // jika sudah memeriksa semua slot
+            if (i > size) { 
                 System.out.println("Tabel penuh, tidak bisa menambahkan data: " + data);
                 return;
             }
