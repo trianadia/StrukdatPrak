@@ -2,10 +2,10 @@ package prak9.pengayaan;
 
 import java.util.Random;
 
-public class HeapSortApp {
+public class HeapSortAppt {
     public static void main(String[] args) {
         int size = 10;
-        Heap heap = new Heap(size);
+        Heapt heap = new Heapt(size);
         Random rand = new Random();
 
         // Masukkan data acak
@@ -20,8 +20,9 @@ public class HeapSortApp {
 
         heap.heapSort();
 
-        System.out.println("\n=== ARRAY SETELAH DIURUTKAN (DESCENDING) ===");
-        heap.displayArray();
+        System.out.println();
+        // Cetak tampilan heap setelah perubahan key / setelah proses
+        heap.displayHeapWithTree();
     }
 }
 

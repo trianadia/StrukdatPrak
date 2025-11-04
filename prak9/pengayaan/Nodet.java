@@ -1,9 +1,9 @@
 package prak9.pengayaan;
 
-public class Node {
+public class Nodet {
     private int data;
 
-    public Node(int key) {
+    public Nodet(int key) {
         data = key;
     }
 
