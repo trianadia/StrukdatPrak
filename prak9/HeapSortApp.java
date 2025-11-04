@@ -134,12 +134,6 @@ class Heap {
             currentSize--;
             trickleDown(0);
         }
-        // Balikkan array hasil heapSort agar urutan menjadi terbesar -> terkecil
-        for (int i = 0; i < maxSize / 2; i++) {
-            Node tmp = heapArray[i];
-            heapArray[i] = heapArray[maxSize - 1 - i];
-            heapArray[maxSize - 1 - i] = tmp;
-        }
     }
 }
 
