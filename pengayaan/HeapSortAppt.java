@@ -1,11 +1,11 @@
-package prak9.pengayaan;
+package pengayaan;
 
 import java.util.Random;
 
 public class HeapSortAppt {
     public static void main(String[] args) {
         int size = 10;
-        Heapt heap = new Heapt(size);
+        Heap heap = new Heap(size);
         Random rand = new Random();
 
         // Masukkan data acak
@@ -16,13 +16,14 @@ public class HeapSortAppt {
         }
 
         System.out.println("=== ARRAY SEBELUM DIURUTKAN ===");
-        heap.displayArray();
+        heap.displayTree();
 
         heap.heapSort();
 
         System.out.println();
         // Cetak tampilan heap setelah perubahan key / setelah proses
-        heap.displayHeapWithTree();
+        System.out.println("=== ARRAY SETELAH DIURUTKAN ===");
+        heap.displayTree();
     }
 }
 

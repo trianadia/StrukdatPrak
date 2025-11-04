@@ -1,4 +1,4 @@
-package prak9.pengayaan;
+package pengayaan;
 
 public class Nodet {
     private int data;
