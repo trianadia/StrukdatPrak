@@ -23,7 +23,6 @@ public class GraphAppP1 {
         vertexList[nVerts++] = label;
     }
 
-    // Directed edge (satu arah)
     public void addEdge(int start, int end) {
         adjMat[start][end] = 1;
     }
@@ -42,7 +41,6 @@ public class GraphAppP1 {
         System.out.println();
     }
 
-    // ===== DFS (Depth First Search) =====
     private void dfs(int start, boolean[] visited) {
         visited[start] = true;
         System.out.print(vertexList[start] + " ");
@@ -53,35 +51,45 @@ public class GraphAppP1 {
         }
     }
 
-    // ===== Menampilkan Connectivity Table =====
+    private void dfsCollect(int start, boolean[] visited, java.util.List<Character> list) {
+        visited[start] = true;
+        list.add(vertexList[start]);
+        for (int i = 0; i < nVerts; i++) {
+            if (adjMat[start][i] == 1 && !visited[i]) {
+                dfsCollect(i, visited, list);
+            }
+        }
+    }
+
     public void displayConnectivity() {
         System.out.println("Connectivity Table:");
         for (int i = 0; i < nVerts; i++) {
             boolean[] visited = new boolean[nVerts];
-            dfs(i, visited);
+            java.util.List<Character> reachable = new java.util.ArrayList<>();
+            dfsCollect(i, visited, reachable);
+            // cetak seluruh list (source pertama, lalu reachable)
+            for (char c : reachable) {
+                System.out.print(c + " ");
+            }
             System.out.println();
         }
     }
 
-    // ===== Main Program =====
     public static void main(String[] args) {
         GraphAppP1 theGraph = new GraphAppP1();
 
-        // Tambahkan vertex (A, B, C, D, E)
         theGraph.addVertex('A'); // 0
         theGraph.addVertex('B'); // 1
         theGraph.addVertex('C'); // 2
         theGraph.addVertex('D'); // 3
         theGraph.addVertex('E'); // 4
 
-        // Tambahkan edge sesuai Gambar 10.8
-        theGraph.addEdge(1, 0); // B -> A
-        theGraph.addEdge(0, 2); // A -> C
-        theGraph.addEdge(1, 4); // B -> E
-        theGraph.addEdge(3, 4); // D -> E
-        theGraph.addEdge(4, 2); // E -> C
+        theGraph.addEdge(1, 0); 
+        theGraph.addEdge(0, 2); 
+        theGraph.addEdge(2, 4); 
+        theGraph.addEdge(3, 4); 
+        theGraph.addEdge(4, 2); 
 
-        // Tampilkan hasil adjacency dan tabel koneksi
         theGraph.displayAdjacency();
         theGraph.displayConnectivity();
     }
