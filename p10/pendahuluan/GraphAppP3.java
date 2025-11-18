@@ -43,9 +43,6 @@ public class GraphAppP3 {
         System.out.println();
     }
 
-    // ======================
-    // === Topological Sort ===
-    // ======================
     public void topoSort() {
         char[] sortedArray = new char[nVerts];
         int origVerts = nVerts; // simpan jumlah awal vertex
@@ -67,7 +64,6 @@ public class GraphAppP3 {
         System.out.println("\n");
     }
 
-    // === Cari vertex tanpa successor ===
     private int noSuccessors() {
         boolean isEdge;
         for (int row = 0; row < nVerts; row++) {
@@ -84,7 +80,6 @@ public class GraphAppP3 {
         return -1;
     }
 
-    // === Hapus vertex dari graph ===
     private void deleteVertex(int delVert) {
         if (delVert != nVerts - 1) {
             for (int j = delVert; j < nVerts - 1; j++) {
@@ -114,11 +109,9 @@ public class GraphAppP3 {
         }
     }
 
-    // ===== Main untuk uji topological sort =====
     public static void main(String[] args) {
         GraphAppP3 theGraph = new GraphAppP3();
 
-        // Contoh untuk Gambar 10.10 (mata kuliah prasyarat)
         theGraph.addVertex('A'); // 0
         theGraph.addVertex('B'); // 1
         theGraph.addVertex('C'); // 2
@@ -128,7 +121,6 @@ public class GraphAppP3 {
         theGraph.addVertex('G'); // 6
         theGraph.addVertex('H'); // 7
 
-        // Tambahkan edge sesuai diagram
         theGraph.addEdge(0, 3); // A -> D
         theGraph.addEdge(1, 4); // B -> E
         theGraph.addEdge(2, 5); // C -> F
